@@ -9,8 +9,17 @@ dotenv.config({
     path:'./env'
 })
 
-connectDB()
-
+connectDB()  
+//jb database connect hojaaye tb then aur catch ka message denge
+.then(()=>{
+    app.listen(process.env.PORT||8000,()=>{
+        console.log(` Server is running at port: $
+            {process.env.PORT}`);
+    })
+})
+.catch((err)=>{
+    console.log("MONGO db connection failed!!!",err);
+})
 
 //whenever change in .env restart npm run dev
 
